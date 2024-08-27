@@ -40,11 +40,28 @@ $(document).ready(function(){
         carregarTarefa(codigo, function(dados){
 
             console.log(dados);
+
+            $("#titulo-tarefa").val(dados.titulo);
+            $("#descricao-tarefa").val(dados.descricao);
+            $("#responsavel-tarefa").val(dados.responsavel);
+            $("#data-inicio").val(dados.dataIni);
+            $("#data-fim").val(dados.dataFim);
         });
         
-    }); // fim do click
+    }); // fim do click editar
+
+    $(".nova-tarefa").click(function()){
+        $("input, textarea").removeClass("is-invalid");
+        $("input, textarea").val("");
+    } // fim do click novo tarefa
 
 });
+
+/**
+ * carrega os dados da tarefa indicada pelo ID
+ * @param {string} id 
+ * @param {function} callback 
+ */
 
 function carregarTarefa(id, callback)
 {
