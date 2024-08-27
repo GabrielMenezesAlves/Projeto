@@ -1,0 +1,37 @@
+[
+    {
+        "dataIni": "2024-10-12",
+        "dataFim": "2024-10-15",
+        "titulo": "lavar a louça",
+        "responsavel": "João",
+        "descricao": "lavar a louça"
+    },
+    {
+        "dataIni": "2024-10-12",
+        "dataFim": "2024-10-15",
+        "titulo": "lavar roupa",
+        "responsavel": "João",
+        "descricao": "lavar roupa"
+    },
+    {
+        "dataIni": "2024-10-12",
+        "dataFim": "2024-10-15",
+        "titulo": "nova tarefa",
+        "responsavel": "João",
+        "descricao": "caminhar"
+    },
+    {
+        "dataIni": "2024-10-12",
+        "dataFim": "2024-10-15",
+        "titulo": "nova beleza",
+        "responsavel": "João",
+        "descricao": "lavar a louça"
+    },
+    {
+        "dataIni": "2024-10-12",
+        "dataFim": "2024-10-15",
+        "titulo": "nova tarefa",
+        "responsavel": "João",
+        "descricao": "lavar a louça"
+    }
+]
