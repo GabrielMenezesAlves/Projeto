@@ -5,7 +5,7 @@ $(document).ready(function(){
         console.log(valores)
 
         valores.forEach(function(item, idx){
-            let nova = '<li codigo="'+idx+'" class="tarefa-item task-item-empty">' 
+            let nova = '<li codigo="'+ item._id +'" class="tarefa-item task-item-empty">' 
                 + "<b>"+ item.titulo +"</b>"
                 + "<p>"+ item.descricao +"</p>"
                 +"</li>";
