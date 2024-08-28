@@ -15,6 +15,13 @@ $(document).ready(function(){
 
     });// fim do getJson
 
+    $.getJSON("http://localhost:3003/listar-usuarios", function(usuarios){
+        usuarios.forEach(function(item){
+            let opt = '<option value="'+item._id+'">Usuário 1</option>';
+            $("#responsavel-tarefa").append(opt);
+        });
+    }); // fim do get usuarios
+
     $("#bt-salvar").click(function(){
 
         $("input, textarea").removeClass("is-invalid");
@@ -39,21 +46,22 @@ $(document).ready(function(){
 
         carregarTarefa(codigo, function(dados){
 
-            console.log(dados);
+            let diaIni = dados.dataIni.substr(0, 10);
+            let diaFim = dados.dataFim.substr(0,10);
 
             $("#titulo-tarefa").val(dados.titulo);
             $("#descricao-tarefa").val(dados.descricao);
             $("#responsavel-tarefa").val(dados.responsavel);
-            $("#data-inicio").val(dados.dataIni);
-            $("#data-fim").val(dados.dataFim);
+            $("#data-inicio").val(diaIni);
+            $("#data-fim").val(diaFim);
         });
         
     }); // fim do click editar
 
-    $(".nova-tarefa").click(function()){
+    $(".nova-tarefa").click(function(){
         $("input, textarea").removeClass("is-invalid");
         $("input, textarea").val("");
-    } // fim do click novo tarefa
+    }); // fim do click novo tarefa
 
 });
 
@@ -65,7 +73,7 @@ $(document).ready(function(){
 
 function carregarTarefa(id, callback)
 {
-    $.getJSON("http://localhost:3003/listar-tarefas", function(valores){
+    $.getJSON("localhost:3003/ler-tarefa/"+id, function(valores){
         callback(valores[id])
-    })
+    });
 }
