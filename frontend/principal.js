@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    $.getJSON("/tarefas.json", function(valores){
+    $.getJSON("http://localhost:3003/listar-tarefas", function(valores){
         
         console.log(valores)
 
@@ -65,7 +65,7 @@ $(document).ready(function(){
 
 function carregarTarefa(id, callback)
 {
-    $.getJSON("/tarefas.json", function(valores){
+    $.getJSON("http://localhost:3003/listar-tarefas", function(valores){
         callback(valores[id])
     })
 }
