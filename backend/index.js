@@ -38,6 +38,17 @@ app.post("/cadastro-tarefa", async function(req, res){
     
 });
 
+app.post("/deletar-tarefa/:id", async function(req, res){
+
+    const id = new ObjectId(req.params.id);
+    const mongo = await conexao.connect();
+    const col = mongo.db("gabriel").collection("tarefas");
+
+    let retorno = await col.deleteOne({_id: id});
+    res.json(retorno);
+
+});
+
 app.get("/listar-usuarios", async function(req, res){
     const mongo = await conexao.connect();
     const col = mongo.db("gabriel").collection("usuarios");

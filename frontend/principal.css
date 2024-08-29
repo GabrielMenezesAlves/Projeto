@@ -143,3 +143,17 @@ body {
 .form-control::placeholder, .form-select::placeholder, textarea::placeholder {
     color: #ccc;
 }
+
+.bt-del {
+    border: 1px solid red;    
+    float: right;
+    margin-top: 10px;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    border-radius: 12px;
+}
+
+.bt-del:hover {
+    background-color: red;
+}
