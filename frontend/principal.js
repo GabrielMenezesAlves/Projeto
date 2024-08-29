@@ -17,9 +17,10 @@ $(document).ready(function(){
 
     $.getJSON("http://localhost:3003/listar-usuarios", function(usuarios){
         usuarios.forEach(function(item){
-            let opt = '<option value="'+item._id+'">Usuário 1</option>';
+            let opt = '<option value="'+item._id+'">'+ item.nome +'</option>';
             $("#responsavel-tarefa").append(opt);
         });
+
     }); // fim do get usuarios
 
     $("#bt-salvar").click(function(){
@@ -36,6 +37,28 @@ $(document).ready(function(){
             $("#descricao-tarefa").addClass("is-invalid");
         }
 
+        let diaIni = new Date($("#data-inicio").val());
+                
+        let tarefa = {
+            titulo: $("#titulo-tarefa").val(),
+            descricao: $("#descricao-tarefa").val(),
+            dataIni: diaIni.toISOString(),
+            dataFim: $("#data-fim").val() + "T03:00:00.000Z",
+            responsavel: {
+                _id: $("#responsavel-tarefa").val(),
+                nome: $("#responsavel-tarefa option:selected").text()
+            },
+            id: $("#id-tarefa").val()
+        };
+
+        console.log(tarefa);
+
+        $.post("localhost:3003/cadastro-tarefa", tarefa, function(retorno, status){
+            console.log(retorno);
+            $("#modalTarefa").modal("hide");
+            location.reload();
+        }); // fim post
+
 
 
     }); //fim do click bt-salvar
@@ -51,9 +74,10 @@ $(document).ready(function(){
 
             $("#titulo-tarefa").val(dados.titulo);
             $("#descricao-tarefa").val(dados.descricao);
-            $("#responsavel-tarefa").val(dados.responsavel);
+            $("#responsavel-tarefa").val(dados.responsavel._id);
             $("#data-inicio").val(diaIni);
             $("#data-fim").val(diaFim);
+            $("#id-tarefa").val(codigo);
         });
         
     }); // fim do click editar
@@ -74,6 +98,7 @@ $(document).ready(function(){
 function carregarTarefa(id, callback)
 {
     $.getJSON("localhost:3003/ler-tarefa/"+id, function(valores){
-        callback(valores[id])
-    });
+        callback(valores)
+
+    })
 }
