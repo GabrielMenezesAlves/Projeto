@@ -1,14 +1,17 @@
 $(document).ready(function(){
 
-    $.getJSON("http://localhost:3003/listar-tarefas", function(valores){
-        
-        console.log(valores)
+    let usuario = localStorage.getItem("usuario");
+    if (!usuario) {
+        location.assign("/login");
+    }
 
+    $.getJSON("http://localhost:3003/listar-tarefas", function(valores){   
+    
         valores.forEach(function(item, idx){
             let nova = '<li codigo="'+ item._id +'" class="tarefa-item task-item-empty">' 
+                +'<span class="bt-del"> X </span>'
                 + "<b>"+ item.titulo +"</b>"
-                + "<p>"+ item.descricao +"</p>"
-                + '<span class="bt-del"> X </span>'
+                + "<p>"+ item.descricao +"</p>"                
                 +"</li>";
             
             $(".tarefas-dia").append(nova);

@@ -18,6 +18,8 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
+    <script src="login.js"></script>
+
 
 
     <style>
@@ -112,15 +114,19 @@
 
 
     <main class="form-signin w-100 m-auto ">
-        <form class="box-login">
+        <form class="box-login" action="http://localhost:3003/logar" method="post">
             <h1 class="h3 mb-3 fw-normal">Logar</h1>
 
+            <div id="msg" class="alert alert-danger">
+                menssagem
+            </div>
+
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Email</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" name="senha" class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Senha</label>
             </div>
 
